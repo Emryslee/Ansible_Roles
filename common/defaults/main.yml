@@ -1,0 +1,40 @@
+---
+# common packages
+common_install_packages:
+  - vim
+  - traceroute
+  - curl
+  - wget
+  - tcpdump
+  - tree
+  - net-tools
+  - bash-completion
+
+# user setup
+common_ops_user: ops
+
+# ssh setup
+sshd_port: 22
+sshd_permit_root_login: "no"
+sshd_password_authentication: "no"
+sshd_pubkey_authentication: "yes"
+sshd_use_pam: "yes"
+sshd_challenge_response_auth: "no"
+
+# ntp setup
+chrony_ntp_servers:
+  - "ntp.nict.jp"
+  - "ntp.jst.mfeed.ad.jp"
+  - "ntp.nict.go.jp"
+
+# firewall setup
+common_firewall_ports:
+  - 22
+  - 80
+  - 443
+  - 8080
+  - 8443
+  - 53
+common_firewall_udp_ports:
+  - 53
+  - 123

@@ -1,0 +1,27 @@
+---
+- name: deploy repo file
+  block:
+    - name: Deploy repo file for CentOS
+      copy:
+        src: "{{ item.src }}"
+        dest: "{{ item.dest }}"
+        owner: root
+        group: root
+        mode: '0644'
+      loop:
+        - { src: "files/yum.repos.d/epel.repo", dest: "/etc/yum.repos.d/epel.repo" }
+
+    - name: Delivery RPM-GPG-KEY
+      copy:
+        src: "{{ item.src }}"
+        dest: "{{ item.dest }}"
+        owner: root
+        group: root
+        mode: '0644'
+      loop:
+        - { src: "files/pki/rpm-gpg/RPM-GPG-KEY-EPEL-8", dest: "/etc//etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-8" }
+  when: ansible_facts['distribution'] == "CentOS"
+
+  tags:
+    - common
+    - common_repo_setup

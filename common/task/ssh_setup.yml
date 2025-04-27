@@ -1,0 +1,21 @@
+---
+- name: SSH Setup
+  block:
+    - name: backup original sshd_config
+      copy:
+        src: /etc/ssh/sshd_config
+        dest: /etc/ssh/sshd_config.org
+        remote_src: yes # リモートsrc利用
+
+    - name: deploy sshd_config
+      template:
+        src: sshd/sshd_config.j2
+        dest: /etc/ssh/sshd_config
+        owner: root
+        group: root
+        mode: '0600'
+      notify: restart sshd
+
+  tags:
+    - common
+    - common_ssh_setup

@@ -1,0 +1,35 @@
+---
+- name: firewall setup
+  block:
+    - name: Ensure firewalld is installed
+      package:
+        name: firewalld
+        state: present
+
+    - name: Ensure firewalld is running and enabled
+      service:
+        name: firewalld
+        state: started
+        enabled: yes
+
+    - name: Open required ports
+      firewalld:
+        port: "{{ item }}/tcp"
+        permanent: yes
+        state: enabled
+        immediate: yes
+      loop: "{{ common_firewall_ports }}"
+
+    - name: Open UDP ports
+      firewalld:
+        port: "{{ item }}/udp"
+        permanent: yes
+        state: enabled
+        immediate: yes
+      loop: "{{ common_firewall_udp_ports }}"
+      when: common_firewall_udp_ports is defined
+  notify: reload firewalld
+
+  tags:
+    - common
+    - common_firewall_setup

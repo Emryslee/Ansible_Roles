@@ -1,0 +1,29 @@
+---
+- name: ntp setup
+  block:
+    - name: Install chrony
+      dnf:
+        name: chrony
+        state: present
+
+    - name: backup original chrony/chrony.conf.j2
+      copy:
+        src: /etc/chrony.conf
+        dest: /etc/chrony.conf.org
+        remote_src: yes
+
+    - name: Deploy chrony configuration
+      template:
+        src: chrony/chrony.conf.j2
+        dest: /etc/chrony.conf
+      notify: restart chrony
+
+    - name: Enable and Restart chrony.service
+      service:
+        name: chronyd
+        state: started
+        enabled: yes
+
+  tags:
+    - common
+    - common_ntp_setup
