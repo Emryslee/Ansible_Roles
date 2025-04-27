@@ -1,0 +1,16 @@
+---
+- name: selinux setup
+  block:
+    - name: Disable selinux
+      copy:
+        scr: selinux/config
+        dest: /etc/selinux/config
+        owner: root
+        group: root
+        mode: '0644'
+      notify: reboot for selinux
+
+  tags:
+    - common
+    - common_selinux_setup
+ 

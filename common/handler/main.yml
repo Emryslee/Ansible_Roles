@@ -1,0 +1,29 @@
+---
+- name: restart sshd
+  service:
+    name: sshd
+    state: restarted
+  when:
+    - ansible_os_family == "RedHat"
+
+- name: restart sshd
+  service:
+    name: sshd
+    state: restarted
+  when:
+    - ansible_os_family == "Debian"
+
+- name: restart chrony
+  service:
+    name: chronyd
+    state: restarted
+
+- name: reload firewalld
+  service:
+    name: firewalld
+    state: reloaded
+
+- name: reboot for selinux
+  reboot:
+    msg: "Rebooting to apply SELinux disable"
+    test_command: "getenforce"

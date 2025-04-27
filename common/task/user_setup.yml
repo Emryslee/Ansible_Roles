@@ -1,0 +1,21 @@
+---
+- name: Setup user
+  block:
+  - name: Create ops user
+    user:
+      name: ops
+      groups: wheel
+      shell: /bin/bash
+      create_home: yes
+      state: present
+
+  - name: Set SSH pubkey for ops
+    authorized_key:
+      user: "{{ common_ops_user }}"
+      key: "{{ item }}"
+    with_file:
+      - files/sshd/ops_id_rsa.pub
+
+  tags:
+    - common
+    - common_user_setup

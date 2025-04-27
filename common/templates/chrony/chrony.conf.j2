@@ -1,0 +1,7 @@
+# Ansible managed chrony.conf
+
+{% for server in chrony_ntp_servers %}
+server {{ server }} iburst
+{% endfor %}
+
+logdir /var/log/chrony
