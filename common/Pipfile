@@ -1,0 +1,22 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+docker = "*"
+molecule = "==6.0.2"
+molecule-docker = "==2.1.0"
+pytest = "=7.0.0"
+testinfra = "=6.0.0"
+
+[packages]
+ansible = "*"
+ansible-lint = "*"
+flake8 = "*"
+apache-libcloud = "*"
+psycopg2-binary = "*" # PythonでPostgreSQL操作
+PyMySQL = "*"         # PythonでMySQL系操作
+
+[requires]
+python_version = "3.9"
