@@ -1,0 +1,14 @@
+FROM rockylinux:8
+
+# Ansible&Molecule用Toolsインストール
+RUN dnf install -y \
+    python3 \
+    python3-pip \
+    iproute \
+    procps \
+    systemd \
+    sudo \
+    curl \
+    which \
+    && pip3 install pipenv \
+    && dnf clean all

@@ -1,0 +1,7 @@
+---
+# TestインスタンスにRoleを適用する際に使うdummyPlaybook
+- name: Converge
+  hosts: all
+  become: true
+  roles:
+    - role: common

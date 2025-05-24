@@ -1,0 +1,2 @@
+# common roleのテスト結果確認
+# testinfraを利用するため、ansible verifier(verify.yml)を利用しない

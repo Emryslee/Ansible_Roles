@@ -1,0 +1,28 @@
+---
+- name: Prepare test-instance for common role
+  hosts: all
+  become: true
+  tasks:
+    - name: install epel
+      package:
+        name: epel-release
+        state: present
+
+    - name: install python tools
+      package:
+        name:
+          - python3
+          - python3-pip
+        state: present
+
+    - name: disable selinux
+      command: setenforce 0
+      when: ansible_selinux.status == "enable"
+      ignore_errors: true
+
+    - name: stop firewall
+      service:
+        name: firewalld
+        state: stopped
+        enable: false
+      ignore_errors: true
