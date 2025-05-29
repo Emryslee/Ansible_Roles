@@ -3,9 +3,9 @@
   block:
   - name: Install basic tools
     package:
-      name: "{{ item}}"
+      name: "{{ item }}"
       state: present
-    loop: "{{ common_install_packages}}"
+    loop: "{{ common_install_packages }}"
 
   - name: Install VMware tools
     package:

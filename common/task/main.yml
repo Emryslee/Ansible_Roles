@@ -1,8 +1,0 @@
----
-- include_tasks: deploy_repo_file.yml
-- include_tasks: install_packages.yml
-- include_tasks: user_setup.yml
-- include_tasks: ssh_setup.yml
-- include_tasks: chrony.yml
-- include_tasks: firewall.yml
-- include_tasks: selinux.yml

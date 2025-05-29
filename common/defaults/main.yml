@@ -3,6 +3,7 @@
 common_install_packages:
   - vim
   - traceroute
+  - openssh-server
   - curl
   - wget
   - tcpdump

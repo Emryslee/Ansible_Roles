@@ -1,0 +1,14 @@
+---
+- name: Setup logrotate
+  block:
+    - name: setup logrotate config
+      copy:
+        src: etc/logrotate.conf
+        dest: /etc/logrotate.conf
+        owner: root
+        group: root
+        mode: '0644'
+
+  tags:
+    - common
+    - common_logrotate

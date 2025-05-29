@@ -3,7 +3,7 @@
   block:
     - name: Disable selinux
       copy:
-        scr: selinux/config
+        src: selinux/config
         dest: /etc/selinux/config
         owner: root
         group: root
@@ -13,4 +13,4 @@
   tags:
     - common
     - common_selinux_setup
- 
+  when: molecule_yml is not defined

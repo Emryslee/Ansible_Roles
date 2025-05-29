@@ -20,7 +20,7 @@ provisioner:
 #    name: ansible-lint
   config_options:
     defaults:
-      roles_path: /gitlab/ansible_roles
+      roles_path: /gitlab/roles
 
 verifier:
   name: testinfra    # デフォルトはAnsible

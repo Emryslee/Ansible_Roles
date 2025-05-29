@@ -1,0 +1,14 @@
+---
+# tasks file for common
+- import_tasks: deploy_repo_file.yml
+- import_tasks: install_packages.yml
+- import_tasks: user_setup.yml
+- import_tasks: ssh_setup.yml
+- import_tasks: chrony.yml
+- import_tasks: firewall.yml
+- import_tasks: selinux.yml
+#- import_tasks: nfs_client.yml
+#- import_tasks: logrotate.yml #conf未作成
+#- import_tasks: rhel_subscription.yml
+#  when:
+#    - ansible_distributtion == "RedHat"

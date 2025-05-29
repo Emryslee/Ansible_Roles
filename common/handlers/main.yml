@@ -3,20 +3,12 @@
   service:
     name: sshd
     state: restarted
-  when:
-    - ansible_os_family == "RedHat"
-
-- name: restart sshd
-  service:
-    name: sshd
-    state: restarted
-  when:
-    - ansible_os_family == "Debian"
 
 - name: restart chrony
   service:
     name: chronyd
     state: restarted
+  when: molecule_yml is not defined
 
 - name: reload firewalld
   service:
@@ -27,3 +19,4 @@
   reboot:
     msg: "Rebooting to apply SELinux disable"
     test_command: "getenforce"
+  when: molecule_yml is not defined
