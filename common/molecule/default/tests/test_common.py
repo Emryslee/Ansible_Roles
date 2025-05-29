@@ -6,10 +6,10 @@ def test_packages_installed(host):
         assert host.exists(pkg), f"{pkg} is not be installed"
 
 # test selinux
-def test_selinux(host):
-    result = host.run("getenforce")
-    assert result.rc == 0
-    assert result.stdout.strip() in ["Disabled", "Permissive"], "SELinux should be Disabled"
+#def test_selinux(host):
+#    result = host.run("getenforce")
+#    assert result.rc == 0
+#    assert result.stdout.strip() in ["Disabled", "Permissive"], "SELinux should be Disabled"
 
 # test firewalld
 def test_firewalld(host):

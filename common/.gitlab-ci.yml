@@ -37,7 +37,7 @@ molecule_test:
   variables:
     DOCKER_HOST: tcp://docker:2375/
     DOCKER_TLS_CERTDIR: ""
-    ANSIBLE_ROLES_PATH: /gitlab/ansible_roles
+    ANSIBLE_ROLES_PATH: /gitlab/roles
   before_script:
     - apt-get update && apt-get install -y rsync python3 python3-pip sshpass libvirt-dev gcc libssl-dev libffi-dev docker.io
     - docker build -t molecule_rockylinux -f Dockerfile.rockylinux8 .

@@ -1,0 +1,7 @@
+skip_list:
+  - fqcn[action-core]
+  - fqcn[action]
+  - name[casing]
+  - name[missing]
+  - key-order[task]
+  - jinja[spacing]

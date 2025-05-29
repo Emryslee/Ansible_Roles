@@ -1,4 +1,5 @@
 ---
+# 要修正
 - name: deploy repo file
   block:
     - name: Deploy repo file for CentOS
