@@ -2,7 +2,7 @@
 # 要修正
 - name: deploy repo file
   block:
-    - name: Deploy repo file for CentOS
+    - name: Deploy repo file
       copy:
         src: "{{ item.src }}"
         dest: "{{ item.dest }}"
@@ -11,6 +11,7 @@
         mode: '0644'
       loop:
         - { src: "files/yum.repos.d/epel.repo", dest: "/etc/yum.repos.d/epel.repo" }
+        #- { src: "files/yum.repos.d/kubernetes.repo", dest: "/etc/yum.repos.d/kubernetes.repo" }
 
     - name: Delivery RPM-GPG-KEY
       copy:
@@ -20,8 +21,11 @@
         group: root
         mode: '0644'
       loop:
-        - { src: "files/pki/rpm-gpg/RPM-GPG-KEY-EPEL-8", dest: "/etc//etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-8" }
-  when: ansible_facts['distribution'] == "CentOS"
+        - { src: "files/pki/rpm-gpg/RPM-GPG-KEY-EPEL-8", dest: "/etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-8" }
+        #- { src: "files/pki/rpm-gpg/k8s-combined.gpg", dest: "/etc/pki/rpm-gpg/k8s-combined.gpg" }
+  when: 
+    - ansible_facts['distribution'] in ["RedHat", "CentOS", "Rocky", "AlmaLinux"]
+    - ansible_facts['distribution_major_version'] == "8"
 
   tags:
     - common
